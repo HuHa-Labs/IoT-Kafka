@@ -1,8 +1,8 @@
-#!/bin/bash
-
+#!/bin/sh
 echo "Starting the application..."
-sleep 10
 
-/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic test-topic
+sleep 20 # wait for Kafka to start
 
-wait
+/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic test-topic --if-not-exists --partitions 1 --replication-factor 1
+
+tail -f /dev/null
